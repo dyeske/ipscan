@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # This scripts downloads and optimizes IEEE MAC vendor list
 
 SED_APP='sed'
@@ -8,7 +8,7 @@ if [ "$(uname)" = "Darwin" ]; then
   SED_APP='gsed'
 fi
 
-curl 'http://standards-oui.ieee.org/oui/oui.txt' |\
+curl 'https://standards-oui.ieee.org' |\
 fgrep '(base 16)' | $SED_APP -r '
 	s/\r//g; s/     \(base 16\)\t\t//
 	s/,? ?(Inc)\.?$//I
